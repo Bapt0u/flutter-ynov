@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:ynov/fetchMovie.dart';
+import 'package:ynov/fetchMovieList.dart';
 
 class FutureTest extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class FutureTest extends StatelessWidget {
       // Le premier paramètre est la future contenant
       // la valeur que l'on souhaite récuperer.
       // future: Future.delayed(Duration(seconds: 3)),
-      future: fetchMovie(),
+      future: fetchMovieList(),
 
       // La fonction de build permet d'afficher un widget en fonction
       // du résultat contenun dans snapshot
