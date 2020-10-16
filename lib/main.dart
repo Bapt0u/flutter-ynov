@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ynov/MovieList.dart';
-import 'package:ynov/DetailView.dart';
+// import 'package:ynov/DetailView.dart';
 
 void main() {
   runApp(MyApp());
