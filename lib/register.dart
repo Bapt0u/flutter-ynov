@@ -9,7 +9,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
@@ -20,22 +20,16 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // extendBody: true,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text("Register [DEBUG]"),
-        backgroundColor: Colors.red[800],
-      ),
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          padding: EdgeInsets.symmetric(horizontal: 24),
           children: <Widget>[
-            SizedBox(height: 00.0),
+            SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                new Image.asset("image/flame-no-connection.png"),
+                new Image.asset("image/flame-1235.png"),
                 SizedBox(height: 16),
-                Text("Netflix&Chill Register"),
+                Text("You're about to create an account..."),
               ],
             ),
             SizedBox(height: 40),
@@ -43,10 +37,10 @@ class _RegisterPageState extends State<RegisterPage> {
               onChanged: (value) {
                 username = value;
               },
-              controller: _usernameController,
+              controller: _emailController,
               decoration: InputDecoration(
                 filled: true,
-                labelText: "Username",
+                labelText: "Email",
               ),
             ),
             SizedBox(height: 12),
@@ -66,9 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 FlatButton(
                     child: Text("Cancel"),
                     onPressed: () {
-                      _usernameController.clear();
-                      _passwordController.clear();
-                      //Clear text field
+                      Navigator.pop(context);
                     }),
                 RaisedButton(
                     child: Text("Next"),
@@ -79,12 +71,14 @@ class _RegisterPageState extends State<RegisterPage> {
                                 email: username, password: password);
 
                         if (newuser != null) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
                         }
                       } catch (e) {
                         print(e.toString());
                       }
-                      //See content
                     }),
               ],
             ),

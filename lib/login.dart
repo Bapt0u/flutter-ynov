@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ynov/register.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          padding: EdgeInsets.symmetric(horizontal: 24),
           children: <Widget>[
             SizedBox(height: 80.0),
             Column(
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
               controller: _usernameController,
               decoration: InputDecoration(
                 filled: true,
-                labelText: "Username",
+                labelText: "Email",
               ),
             ),
             SizedBox(height: 12),
@@ -57,8 +58,18 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       _usernameController.clear();
                       _passwordController.clear();
-                      //Clear text field
                     }),
+                SizedBox(width: 12),
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()),
+                    );
+                  },
+                  child: Text("Register"),
+                ),
+                SizedBox(width: 12,),
                 RaisedButton(
                     child: Text("Next"),
                     onPressed: () async {
@@ -74,7 +85,6 @@ class _LoginPageState extends State<LoginPage> {
                       } catch (e) {
                         print(e);
                       }
-                      //See content
                     }),
               ],
             ),
