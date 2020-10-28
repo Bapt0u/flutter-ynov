@@ -1,18 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:ynov/MovieList.dart';
+import 'app.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'package:firebase_core/firebase_core.dart';
 
-class MyApp extends StatelessWidget {
+void main() => runApp(Init());
+
+class Init extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ynov Flutter',
-      home: MovieList(),
+    return FutureBuilder(
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return MyApp();
+        }
+
+        return Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
