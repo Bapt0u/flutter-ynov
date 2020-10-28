@@ -1,6 +1,7 @@
-# ynov
+# Netflix Low Cost
 
-A new Flutter project.
+This school project is an app developped with Flutter, a framework developped by Google.   
+
 
 ## Getting Started
 
