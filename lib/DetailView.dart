@@ -69,7 +69,9 @@ class DetailView extends StatelessWidget {
                             ),
                             Text(
                               // snapshot.data.releaseDate.toString(),
-                              DateTime.parse(snapshot.data.releaseDate).year.toString(),
+                              DateTime.parse(snapshot.data.releaseDate)
+                                  .year
+                                  .toString(),
                               style: TextStyle(color: Colors.white),
                             ),
                             Text(
@@ -96,7 +98,7 @@ class DetailView extends StatelessWidget {
                               margin: EdgeInsets.only(top: 11, left: 15),
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text("Drama"),
+                                child: Text("n00b"),
                               ),
                             ),
                           ],

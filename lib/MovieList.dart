@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ynov/fetchMovieList.dart';
+import 'package:ynov/getMovieList.dart';
 import 'package:ynov/movie.dart';
 
 import 'DetailView.dart';
@@ -17,8 +17,9 @@ class FutureMovie extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return FutureBuilder<List<Movie>>(
-        future: fetchMovieList(type),
+        future: getMovieList(type),
         builder: (context, snapshot) {
+          print(snapshot.error);
           if (snapshot.hasData) {
             return ListView.builder(
               scrollDirection: Axis.horizontal,

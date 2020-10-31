@@ -56,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 FlatButton(
                     child: Text("Cancel"),
                     onPressed: () {
+                      Navigator.pop(context);
                       _usernameController.clear();
                       _passwordController.clear();
                     }),

@@ -9,12 +9,13 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  // final _emailController = TextEditingController();
+  // final _passwordController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
 
-  String username, password;
+  String username, password, passwordConfirmation;
+  String connexionError = "";
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 new Image.asset("image/flame-1235.png"),
                 SizedBox(height: 16),
                 Text("You're about to create an account..."),
+                Text(
+                  connexionError,
+                  style: TextStyle(
+                    color: Colors.red,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 40),
@@ -37,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
               onChanged: (value) {
                 username = value;
               },
-              controller: _emailController,
+              // controller: _emailController,
               decoration: InputDecoration(
                 filled: true,
                 labelText: "Email",
@@ -48,10 +55,22 @@ class _RegisterPageState extends State<RegisterPage> {
               onChanged: (value) {
                 password = value;
               },
-              controller: _passwordController,
+              // controller: _passwordController,
               decoration: InputDecoration(
                 filled: true,
                 labelText: "Password",
+              ),
+              obscureText: true,
+            ),
+            SizedBox(height: 12),
+            TextField(
+              onChanged: (value) {
+                passwordConfirmation = value;
+              },
+              // controller: _passwordController,
+              decoration: InputDecoration(
+                filled: true,
+                labelText: "Password confirmation",
               ),
               obscureText: true,
             ),
@@ -65,19 +84,25 @@ class _RegisterPageState extends State<RegisterPage> {
                 RaisedButton(
                     child: Text("Next"),
                     onPressed: () async {
-                      try {
-                        final newuser =
-                            await _auth.createUserWithEmailAndPassword(
-                                email: username, password: password);
+                      if (password == passwordConfirmation) {
+                        try {
+                          final newuser =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: username, password: password);
 
-                        if (newuser != null) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
+                          if (newuser != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          }
+                        } catch (e) {
+                          print(e.toString());
                         }
-                      } catch (e) {
-                        print(e.toString());
+                      } else {
+                        setState(() {
+                          connexionError = 'Password doesn\'t macth';
+                        });
                       }
                     }),
               ],

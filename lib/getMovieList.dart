@@ -4,7 +4,7 @@ import 'package:ynov/movie.dart';
 
 import 'package:http/http.dart' as http;
 
-Future<List<Movie>> fetchMovieList(int a) async {
+Future<List<Movie>> getMovieList(int a) async {
   List<Movie> movieList = [];
   String url;
   if (a == 0){
@@ -18,6 +18,7 @@ Future<List<Movie>> fetchMovieList(int a) async {
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
+    // print(response.body);
     var jsonResponse = jsonDecode(response.body)["results"];
     
     for (var i in jsonResponse) {
