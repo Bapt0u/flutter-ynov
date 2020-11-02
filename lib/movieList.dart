@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ynov/getMovieList.dart';
 import 'package:ynov/movie.dart';
+import 'package:ynov/getBestMovies.dart';
 
 import 'detailView.dart';
 
@@ -17,55 +18,54 @@ class FutureMovie extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return FutureBuilder<List<Movie>>(
-        future: getMovieList(type),
-        builder: (context, snapshot) {
-          print(snapshot.error);
-          if (snapshot.hasData) {
-            return ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailView(
-                                  id: snapshot.data[index].id,
-                                  type: type,
-                                )));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 7, top: 12, right: 7, bottom: 12),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 3,
-                            blurRadius: 7,
-                            offset: Offset(0, 0), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          snapshot.data[index].posterPath,
+      future: getMovieList(type),
+      builder: (context, snapshot) {
+        print(snapshot.error);
+        if (snapshot.hasData) {
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: snapshot.data.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailView(
+                                id: snapshot.data[index].id,
+                                type: type,
+                              )));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 7, top: 12, right: 7, bottom: 12),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 3,
+                          blurRadius: 7,
+                          offset: Offset(0, 0), // changes position of shadow
                         ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        snapshot.data[index].posterPath,
                       ),
                     ),
                   ),
-                );
-              },
-            );
-          }
-          // } else if (snapshot.hasError) {
-          //   return Text("${snapshot.error}");
-          // }
+                ),
+              );
+            },
+          );
+        }
 
-          return Center(child: CircularProgressIndicator());
-        });
+        return Center(child: CircularProgressIndicator());
+      },
+    );
   }
 }
 
@@ -76,10 +76,6 @@ class MovieList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      // ),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(5.0),
@@ -119,20 +115,7 @@ class MovieList extends StatelessWidget {
               ),
               Container(
                 height: MediaQuery.of(context).size.height * 0.25,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: a.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DetailView()));
-                        },
-                        child: Image.asset(a[index]));
-                  },
-                ),
+                child: FutureMovie(type:2),
               ),
             ],
           ),

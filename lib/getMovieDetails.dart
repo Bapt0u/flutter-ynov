@@ -8,14 +8,18 @@ Future<MovieDetails> fetchMovieDetails(int id, int type) async {
   MovieDetails moviedetails;
   String url;
 
-  if(type == 0){
+  if (type == 0) {
     url = "https://api.themoviedb.org/3/movie/" +
-      id.toString() +
-      "?api_key=62feaff3d2cf094a340f530fbf25bde9";
-  } else if (type == 1){
+        id.toString() +
+        "?api_key=62feaff3d2cf094a340f530fbf25bde9";
+  } else if (type == 1) {
     url = "https://api.themoviedb.org/3/tv/" +
-      id.toString() +
-      "?api_key=62feaff3d2cf094a340f530fbf25bde9";
+        id.toString() +
+        "?api_key=62feaff3d2cf094a340f530fbf25bde9";
+  } else if (type == 2) {
+    url = "https://api.themoviedb.org/3/movie/" +
+        id.toString() +
+        "?api_key=62feaff3d2cf094a340f530fbf25bde9";
   }
 
   final response = await http.get(url);

@@ -4,16 +4,10 @@ import 'package:ynov/movie.dart';
 
 import 'package:http/http.dart' as http;
 
-Future<List<Movie>> getMovieList(int a) async {
+Future<List<Movie>> getBestMovies() async {
   List<Movie> movieList = [];
-  String url;
-  if (a == 0){
-    url = "https://api.themoviedb.org/3/trending/movie/day?api_key=62feaff3d2cf094a340f530fbf25bde9";
-  } else if (a == 1){
-    url = "https://api.themoviedb.org/3/trending/tv/day?api_key=62feaff3d2cf094a340f530fbf25bde9";
-  } else if (a == 2) {
-    url = "https://api.themoviedb.org/3/movie/top_rated?api_key=62feaff3d2cf094a340f530fbf25bde9&page=1";
-  }
+  String url = "https://api.themoviedb.org/3/movie/top_rated?api_key=62feaff3d2cf094a340f530fbf25bde9&page=1";
+
   final response = await http.get(
       url);
 
