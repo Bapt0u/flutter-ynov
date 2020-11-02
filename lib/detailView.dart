@@ -101,6 +101,23 @@ class DetailView extends StatelessWidget {
                           Wrap(children: [
                             RichText(
                               text: TextSpan(
+                                  text: "Cast : ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                  children:
+                                      snapshot.data.characters.map((actor) {
+                                    return TextSpan(
+                                        text: "${actor.toString()}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.normal));
+                                  }).toList()),
+                            ),
+                          ]),
+                          SizedBox(height: 8),
+                          Wrap(children: [
+                            RichText(
+                              text: TextSpan(
                                 text: "Overview : ",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 18),

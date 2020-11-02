@@ -31,7 +31,14 @@ Future<MovieDetails> fetchMovieDetails(int id, int type) async {
 
     moviedetails = MovieDetails.fromJson(jsonResponse);
 
+    final responseCast = await http.get(
+        "https://api.themoviedb.org/3/movie/$id/credits?api_key=62feaff3d2cf094a340f530fbf25bde9");
+
+    // var jsonResponse2 = jsonDecode(responseCast.body);
+    moviedetails.castingList(jsonDecode(responseCast.body)["cast"]);
+    // print(moviedetails);
     return moviedetails;
+    
   } else {
     print("Cannot load page");
     throw Exception('Failed to load details');
