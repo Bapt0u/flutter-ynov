@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:ynov/getMovieList.dart';
 import 'package:ynov/movie.dart';
 
-import 'DetailView.dart';
+import 'detailView.dart';
 
 class FutureMovie extends StatelessWidget {
   Future<Movie> futureMovie;

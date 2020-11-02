@@ -44,17 +44,16 @@ class DetailView extends StatelessWidget {
                     padding: const EdgeInsets.only(
                         top: 88.0, left: 10, right: 10, bottom: 20),
                     child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Text(
-                        //   snapshot.data.title,
-                        //   style: TextStyle(
-                        //     fontSize: 40,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: Colors.white,
-                        //   ),
-                        // ),
+                        Text(
+                          snapshot.data.title,
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                         SizedBox(height: 3),
                         Wrap(
                           spacing: 9,
@@ -68,7 +67,6 @@ class DetailView extends StatelessWidget {
                               style: TextStyle(color: Colors.white),
                             ),
                             Text(
-                              // snapshot.data.releaseDate.toString(),
                               DateTime.parse(snapshot.data.releaseDate)
                                   .year
                                   .toString(),
@@ -86,22 +84,17 @@ class DetailView extends StatelessWidget {
                           ],
                         ),
                         Wrap(
-                          children: [
-                            Card(
-                              margin: EdgeInsets.only(top: 11),
+                          spacing: 10,
+                          children: snapshot.data.tags.map((tag) {
+                            return Card(
+                              margin: EdgeInsets.only(top: 11, bottom: 11),
                               child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Text("Crime"),
+                                padding: const EdgeInsets.only(
+                                    top: 5.0, bottom: 5, left: 9, right: 9),
+                                child: Text(tag["name"]),
                               ),
-                            ),
-                            Card(
-                              margin: EdgeInsets.only(top: 11, left: 15),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Text(snapshot.data.tags[1]["name"]),
-                              ),
-                            ),
-                          ],
+                            );
+                          }).toList(),
                         ),
                         SizedBox(height: 8),
                         Wrap(children: [
@@ -119,7 +112,6 @@ class DetailView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          // FutureMovie(),
                         ]),
                       ],
                     ),
