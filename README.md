@@ -16,3 +16,7 @@ An introduction to cross-platform development with the Flutter framework. The ob
 - [ ] Casting list  
 - [ ] List of best movies  
 - [ ] Unit test  
+
+## Credits
+
+Thanks [Icons8](https://icons8.com/) for free icons. 
