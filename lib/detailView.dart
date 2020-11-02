@@ -40,80 +40,82 @@ class DetailView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                        top: 88.0, left: 10, right: 10, bottom: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          snapshot.data.title,
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          top: 88.0, left: 10, right: 10, bottom: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            snapshot.data.title,
+                            style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 3),
-                        Wrap(
-                          spacing: 9,
-                          children: [
-                            Text(
-                              "+15",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text(
-                              " - ",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text(
-                              DateTime.parse(snapshot.data.releaseDate)
-                                  .year
-                                  .toString(),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Text(
-                              " - ",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Icon(Icons.star, color: Colors.yellow, size: 17),
-                            Text(
-                              snapshot.data.voteAverage.toString(),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        Wrap(
-                          spacing: 10,
-                          children: snapshot.data.tags.map((tag) {
-                            return Card(
-                              margin: EdgeInsets.only(top: 11, bottom: 11),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5.0, bottom: 5, left: 9, right: 9),
-                                child: Text(tag["name"]),
+                          SizedBox(height: 3),
+                          Wrap(
+                            spacing: 9,
+                            children: [
+                              Text(
+                                "+15",
+                                style: TextStyle(color: Colors.white),
                               ),
-                            );
-                          }).toList(),
-                        ),
-                        SizedBox(height: 8),
-                        Wrap(children: [
-                          RichText(
-                            text: TextSpan(
-                              text: "Overview : ",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 18),
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: snapshot.data.overview,
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.normal),
-                                ),
-                              ],
-                            ),
+                              Text(
+                                " - ",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Text(
+                                DateTime.parse(snapshot.data.releaseDate)
+                                    .year
+                                    .toString(),
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Text(
+                                " - ",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Icon(Icons.star, color: Colors.yellow, size: 17),
+                              Text(
+                                snapshot.data.voteAverage.toString(),
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
                           ),
-                        ]),
-                      ],
+                          Wrap(
+                            spacing: 10,
+                            children: snapshot.data.tags.map((tag) {
+                              return Card(
+                                margin: EdgeInsets.only(top: 11, bottom: 11),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5.0, bottom: 5, left: 9, right: 9),
+                                  child: Text(tag["name"]),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                          SizedBox(height: 8),
+                          Wrap(children: [
+                            RichText(
+                              text: TextSpan(
+                                text: "Overview : ",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 18),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: snapshot.data.overview,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ]),
+                        ],
+                      ),
                     ),
                   ),
                 ),

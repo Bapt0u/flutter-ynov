@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ynov/getMovieList.dart';
 import 'package:ynov/movie.dart';
-import 'package:ynov/getBestMovies.dart';
 
 import 'detailView.dart';
 
