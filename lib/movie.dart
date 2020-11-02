@@ -16,7 +16,7 @@ class Movie {
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) {
-    print(json);
+    // print(json);
     return Movie(
       overview: json["overview"],
       posterPath: "https://image.tmdb.org/t/p/w500/${json["poster_path"]}",
@@ -25,13 +25,14 @@ class Movie {
   }
 }
 
-class MovieDetails extends Movie{
+class MovieDetails extends Movie {
   String title;
   String overview;
   String posterPath;
   double voteAverage;
   List<dynamic> tags;
   String releaseDate;
+  List<String> characters = [];
 
   MovieDetails({
     this.title,
@@ -42,6 +43,25 @@ class MovieDetails extends Movie{
     this.tags,
   });
 
+  castingList(List<dynamic> list) {
+    int max = 5;
+    if (list?.isEmpty ?? true) {
+      characters.add("Unknown...");
+      max = 0;
+    } else if (list.length < 5) {
+      max = list.length;
+    }
+
+    for (int i = 0; i < max; i++) {
+      if (i == max - 1) {
+        characters.add(" ${list[i]["name"]}");
+        break;
+      }
+      characters.add(" ${list[i]["name"]},");
+    }
+    // print(characters);
+  }
+
   factory MovieDetails.fromJson(Map<String, dynamic> json) {
     return MovieDetails(
       title: json["title"] != null ? json["title"] : json["name"],
@@ -49,7 +69,9 @@ class MovieDetails extends Movie{
       posterPath: "https://image.tmdb.org/t/p/w500/${json["poster_path"]}",
       voteAverage: json["vote_average"],
       tags: json["genres"],
-      releaseDate: json["release_date"] != null ? json["release_date"] : json["first_air_date"],
+      releaseDate: json["release_date"] != null
+          ? json["release_date"]
+          : json["first_air_date"],
     );
   }
 }

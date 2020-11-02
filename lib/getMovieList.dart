@@ -20,7 +20,6 @@ Future<List<Movie>> getMovieList(int a) async {
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    // print(response.body);
     var jsonResponse = jsonDecode(response.body)["results"];
     
     for (var i in jsonResponse) {
