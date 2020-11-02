@@ -19,4 +19,4 @@ An introduction to cross-platform development with the Flutter framework. The ob
 
 ## Credits
 
-Thanks [Icons8](https://icons8.com/) for free icons. 
+Thanks [Icons8](https://icons8.com/) for icons. 
