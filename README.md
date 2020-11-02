@@ -4,15 +4,15 @@ An introduction to cross-platform development with the Flutter framework. The ob
 
 ## Features
 
--[x] Project linked to firebase to authenticates users (either login and register). Anonymous connexion allowed (Press 'cancel' on the login page).  
--[x] Load a list of daily trending Movie And TV show from the API of (TMDB)[https://developers.themoviedb.org]
--[x] Load the detail of the Movie/TV show, including :  
+- [x] Project linked to firebase to authenticates users (either login and register). Anonymous connexion allowed (Press 'cancel' on the login page).  
+- [x] Load a list of daily trending Movie And TV show from the API of [TMDB](https://developers.themoviedb.org)  
+- [x] Load the detail of the Movie/TV show, including :  
     - Title  
     - Release date  
     - Average Note  
     - Genres  
     - Overview  
     - Picture of the cover  
--[ ] Casting list  
--[ ] List of best movies  
--[ ] Unit test  
+- [ ] Casting list  
+- [ ] List of best movies  
+- [ ] Unit test  
