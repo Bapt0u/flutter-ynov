@@ -14,7 +14,7 @@ An introduction to cross-platform development with the Flutter framework. The ob
     - Overview  
     - Picture of the cover  
 - [x] List of best movies  
-- [ ] Casting list  
+- [x] Casting list  
 - [ ] Unit test  
 
 ## Credits
