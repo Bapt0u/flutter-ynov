@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "596185956210",
+    "firebase_url": "https://lowcost-netflix.firebaseio.com",
+    "project_id": "lowcost-netflix",
+    "storage_bucket": "lowcost-netflix.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596185956210:android:3f10de643c5dec35b3e7eb",
+        "android_client_info": {
+          "package_name": "com.ynov.lowcostnetflix.baptou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596185956210-cmsaqiqgjssbmjha8j503dvkp158k1o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUWt76SOg8CuybaOTA1-LDCGGtwxwKDUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596185956210-cmsaqiqgjssbmjha8j503dvkp158k1o8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
