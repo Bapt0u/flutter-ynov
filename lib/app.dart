@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ynov/MovieList.dart';
+import 'package:ynov/movieList.dart';
 import 'login.dart';
 import 'register.dart';
 
