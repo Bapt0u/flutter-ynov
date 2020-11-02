@@ -1,17 +1,18 @@
 # Netflix Low Cost
 
-This school project is an app developped with Flutter, a framework developped by Google.   
+An introduction to cross-platform development with the Flutter framework. The objective is to understand how Flutter works, create simple layouts on different terminals, make network calls and make the interface react according to the user's actions.
 
+## Features
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-[x] Project linked to firebase to authenticates users (either login and register). Anonymous connexion allowed (Press 'cancel' on the login page).
+-[x] Load a list of daily trending Movie And TV show from the API of (TMDB)[https://developers.themoviedb.org]
+-[x] Load the detail of the Movie/TV show, including :
+    - Title
+    - Release date
+    - Average Note
+    - Genres
+    - Overview
+    - Picture of the cover
+-[ ] Casting list
+-[ ] List of best movies
+-[ ] Unit test
