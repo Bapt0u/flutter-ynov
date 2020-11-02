@@ -6,6 +6,7 @@ class Movie {
   double voteAverage;
   String releaseDate;
   // String tags;
+  // Map<int, String> tags = {};
 
   Movie({
     this.title,
@@ -27,7 +28,7 @@ class Movie {
       voteAverage: json["vote_average"],
       releaseDate:
           json["release_date"] != null ? json["release_date"] : "1967-02-20",
-      // tags: json["genres"]["name"],
+      // tags: json["genres"],
     );
   }
 }
@@ -36,15 +37,17 @@ class MovieDetails {
   String title;
   String overview;
   String posterPath;
-  double popularity;
-  List<String> tags;
+  double voteAverage;
+  List<dynamic> tags;
+  String releaseDate;
 
   MovieDetails({
     this.title,
     this.overview,
-    this.popularity,
+    this.voteAverage,
     this.posterPath,
-    // this.tags,
+    this.tags,
+    this.releaseDate,
   });
 
   factory MovieDetails.fromJson(Map<String, dynamic> json) {
@@ -52,8 +55,9 @@ class MovieDetails {
       title: json["title"] != null ? json["title"] : json["name"],
       overview: json["overview"],
       posterPath: "https://image.tmdb.org/t/p/w500/${json["poster_path"]}",
-      popularity: json["popularity"],
-      // tags: json["genres"],
+      voteAverage: json["vote_average"],
+      tags: json["genres"],
+      releaseDate: json["release_date"] != null ? json["release_date"] : "1967-02-20",
     );
   }
 }

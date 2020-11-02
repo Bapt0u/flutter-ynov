@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ynov/movie.dart';
-import 'package:ynov/fetchMovieDetails.dart';
+import 'package:ynov/getMovieDetails.dart';
 
 class DetailView extends StatelessWidget {
   final int id;
@@ -10,7 +10,7 @@ class DetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Movie>(
+    return FutureBuilder<MovieDetails>(
       future: fetchMovieDetails(id, type),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
@@ -47,14 +47,14 @@ class DetailView extends StatelessWidget {
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          snapshot.data.title,
-                          style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
+                        // Text(
+                        //   snapshot.data.title,
+                        //   style: TextStyle(
+                        //     fontSize: 40,
+                        //     fontWeight: FontWeight.bold,
+                        //     color: Colors.white,
+                        //   ),
+                        // ),
                         SizedBox(height: 3),
                         Wrap(
                           spacing: 9,
@@ -98,7 +98,7 @@ class DetailView extends StatelessWidget {
                               margin: EdgeInsets.only(top: 11, left: 15),
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text("n00b"),
+                                child: Text(snapshot.data.tags[1]["name"]),
                               ),
                             ),
                           ],
@@ -112,9 +112,10 @@ class DetailView extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 18),
                               children: <TextSpan>[
                                 TextSpan(
-                                    text: snapshot.data.overview,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.normal))
+                                  text: snapshot.data.overview,
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.normal),
+                                ),
                               ],
                             ),
                           ),
@@ -128,7 +129,11 @@ class DetailView extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasError) {
-          return Text(snapshot.error);
+          return Scaffold(
+            body: Center(
+              child: Text(snapshot.error.toString()),
+            ),
+          );
         }
 
         return Center(child: CircularProgressIndicator());
